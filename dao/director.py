@@ -5,26 +5,25 @@ class DirectorDAO:
     def __init__(self, session):
         self.session = session
 
-    def get_one(self, bid):
-        return self.session.query(Director).get(bid)
+    def get_one(self, director_id):
+        return self.session.query(Director).get(director_id)
 
     def get_all(self):
         return self.session.query(Director).all()
 
-    def create(self, director_d):
-        ent = Director(**director_d)
-        self.session.add(ent)
+    def create(self, director_data):
+        director = Director(**director_data)
+        self.session.add(director)
         self.session.commit()
-        return ent
+        return director
 
-    def delete(self, rid):
-        director = self.get_one(rid)
+    def delete(self, director_id):
+        director = self.get_one(director_id)
         self.session.delete(director)
         self.session.commit()
 
-    def update(self, director_d):
-        director = self.get_one(director_d.get("id"))
-        director.name = director_d.get("name")
-
+    def update(self, director):
         self.session.add(director)
         self.session.commit()
+
+        return director

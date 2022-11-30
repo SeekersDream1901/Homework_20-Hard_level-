@@ -14,13 +14,20 @@ class GenreService:
     def create(self, genre_d):
         return self.dao.create(genre_d)
 
-    def update(self, genre_d):
-        return self.dao.update(genre_d)
+    def update(self, data):
+        genre_id = data.get("id")
+        genre = self.get_one(genre_id)
 
-    def partially_update(self, genre_d):
-        genre = self.get_one(genre_d["id"])
-        if "name" in genre_d:
-            genre.name = genre_d.get("name")
+        genre.name = data.get("name")
+
+        self.dao.update(genre)
+
+    def partially_update(self, data):
+        genre_id = data.get("id")
+        genre = self.get_one(genre_id)
+
+        genre.name = data.get("name")
+
         self.dao.update(genre)
 
     def delete(self, rid):

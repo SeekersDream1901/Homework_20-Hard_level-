@@ -23,7 +23,7 @@ class MoviesView(Resource):
 class MovieView(Resource):
     def get(self, bid):
         movie = movie_service.get_one(bid)
-        return MovieSchema(many=True).dump(movie), 200
+        return MovieSchema().dump(movie), 200
 
     def put(self, bid):
         req_json = request.json
