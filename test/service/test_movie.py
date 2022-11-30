@@ -11,14 +11,19 @@ from service.movie import MovieService
 def movie_dao():
     movie_dao = MovieDAO(None)
 
-    movie_1 = Movie(id=1, title='movie_1', description='description_1', trailer='trailer_1', year=2007, rating=9.0, genre_id=1, director_id=5)
-    movie_2 = Movie(id=2, title='movie_2', description='description_2', trailer='trailer_2', year=1998, rating=6.7, genre_id=3, director_id=4)
-    movie_3 = Movie(id=3, title='movie_3', description='description_3', trailer='trailer_3', year=2022, rating=9.2, genre_id=5, director_id=3)
-    movie_4 = Movie(id=4, title='movie_4', description='description_4', trailer='trailer_4', year=2012, rating=3.5, genre_id=4, director_id=2)
-    movie_5 = Movie(id=5, title='movie_5', description='description_5', trailer='trailer_5', year=2000, rating=8.1, genre_id=2, director_id=1)
+    movie_1 = Movie(id=1, title='movie_1', description='description_1', trailer='trailer_1', year=2007, rating=9.0,
+                    genre_id=1, director_id=5)
+    movie_2 = Movie(id=2, title='movie_2', description='description_2', trailer='trailer_2', year=1998, rating=6.7,
+                    genre_id=3, director_id=4)
+    movie_3 = Movie(id=3, title='movie_3', description='description_3', trailer='trailer_3', year=2022, rating=9.2,
+                    genre_id=5, director_id=3)
+    movie_4 = Movie(id=4, title='movie_4', description='description_4', trailer='trailer_4', year=2012, rating=3.5,
+                    genre_id=4, director_id=2)
+    movie_5 = Movie(id=5, title='movie_5', description='description_5', trailer='trailer_5', year=2000, rating=8.1,
+                    genre_id=2, director_id=1)
 
     movie_dao.get_one = MagicMock(return_value=movie_1)
-    movie_dao.get_all = MagicMock(return_value=[movie_5, movie_4, movie_3, movie_2, movie_1])
+    movie_dao.get_all = MagicMock(return_value=[movie_1, movie_2, movie_3, movie_4, movie_5])
     movie_dao.create = MagicMock(return_value=Movie(id=6))
     movie_dao.delete = MagicMock(return_value=Movie(id=3))
     movie_dao.update = MagicMock(return_value=movie_3)
